@@ -29,6 +29,8 @@ public class UserDao {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
+    private String mobileNo;
+
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "isEnabled", column = @Column(name = "twoFA_isEnabled")),
@@ -39,9 +41,5 @@ public class UserDao {
     private USER_ROLE userRole = USER_ROLE.ROLE_CUSTOMER;
 
 
-//    public Collection<? extends GrantedAuthority> getAuthorities() {
-//        // Assuming role is stored as a single string, like "ROLE_USER"
-//        return Collections.singletonList(new SimpleGrantedAuthority(userRole.toString()));  // Single role
-//    }
 }
 ;

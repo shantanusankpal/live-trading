@@ -7,13 +7,13 @@ import org.springframework.security.core.userdetails.User;
 
 public interface UserService {
 
-    public UserDao findUserProfileByJwt(String jwt) throws Exception;
+    UserDao findUserProfileByJwt(String jwt) throws Exception;
 
-    public UserDao findUserByEmail(String email) throws Exception;
+    UserDao findUserByEmail(String email) throws Exception;
 
-    public UserDao findUserById(Long userId) throws Exception;
+    UserDao findUserById(Long userId) throws Exception;
 
-    public UserDao enableTwoFA(VerificationType verificationType, UserDao userDao);
+    UserDao enableTwoFA(VerificationType verificationType, UserDao userDao);
 
-    public UserDao updatePassword(UserDao userDao, String newPassword);
+    UserDao updatePassword(UserDao userDao, String newPassword);
 }

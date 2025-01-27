@@ -9,7 +9,6 @@ import com.shantanusankpal.trading.service.EmailService;
 import com.shantanusankpal.trading.service.UserDetailsService;
 import com.shantanusankpal.trading.service.interfaces.TwoFAOtpService;
 import com.shantanusankpal.trading.utils.OtpUtils;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -94,7 +93,7 @@ public class AuthController {
             }
             TwoFAOtp newOtp = twoFAOtpService.createTwoFAotp(authUser,otp,jwt);
 
-            emailService.SendVerificationOtpEmail(userEmail,otp);
+            emailService.sendVerificationOtpEmail(userEmail,otp);
 
             res.setSession(newOtp.getId());
             return new ResponseEntity<>(res, HttpStatus.OK);
