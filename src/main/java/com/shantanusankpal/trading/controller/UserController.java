@@ -34,8 +34,6 @@ public class UserController {
 
         UserDao userDao = userService.findUserProfileByJwt(jwt);
 
-        
-
         return new ResponseEntity<>(userDao, HttpStatus.OK);
     }
 
