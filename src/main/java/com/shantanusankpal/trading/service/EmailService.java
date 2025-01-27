@@ -2,7 +2,6 @@ package com.shantanusankpal.trading.service;
 
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.MailSendException;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -15,7 +14,7 @@ public class EmailService {
 
     private JavaMailSender javaMailSender;
 
-    public void SendVerificationOtpEmail(String email, String otp) throws MessagingException {
+    public void sendVerificationOtpEmail(String email, String otp) throws MessagingException {
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();
         MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, "utf-8");
 
