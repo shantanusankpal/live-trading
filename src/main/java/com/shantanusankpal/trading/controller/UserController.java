@@ -1,15 +1,22 @@
 package com.shantanusankpal.trading.controller;
 
+import com.shantanusankpal.trading.dao.ForgotPasswordToken;
 import com.shantanusankpal.trading.dao.UserDao;
 import com.shantanusankpal.trading.domain.VerificationType;
+import com.shantanusankpal.trading.dto.AuthResponse;
+import com.shantanusankpal.trading.dto.ForgotPasswordTokenRequest;
 import com.shantanusankpal.trading.dto.VerificationCode;
 import com.shantanusankpal.trading.service.EmailService;
+import com.shantanusankpal.trading.service.interfaces.ForgotPasswordService;
 import com.shantanusankpal.trading.service.interfaces.UserService;
 import com.shantanusankpal.trading.service.interfaces.VerificationCodeService;
+import com.shantanusankpal.trading.utils.OtpUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
 
 @RestController
 public class UserController {
@@ -22,6 +29,9 @@ public class UserController {
 
     @Autowired
     private VerificationCodeService verificationCodeService;
+
+    @Autowired
+    private ForgotPasswordService forgotPasswordService;
 
     @GetMapping("/api/users/profile")
     public ResponseEntity<UserDao> getUserProfile(@RequestParam("Authorization") String jwt) throws Exception {
@@ -73,4 +83,6 @@ public class UserController {
             throw new RuntimeException("Verification Code could not be verified");
 
     }
+
+
 }
